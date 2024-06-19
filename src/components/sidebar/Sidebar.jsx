@@ -1,13 +1,13 @@
 // import React from 'react'
 import "./sidebar.css";
-import img1 from "../../Assets/images/img1.jpg";
+import img2 from "../../Assets/images/img2.jpg";
 
 export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
-        <img src={img1} alt="" />
+        <img src={img2} alt="" />
         <p>
           Laboris sunt aute cupidatat velit magna velit ullamco dolore mollit
           amet ex esse.Sunt eu ut nostrud id quis proident.
