@@ -1,16 +1,36 @@
 // import React from "react";
 import "./singlePost.css";
-
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import img3 from "../../Assets/images/img3.webp";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SinglePost() {
+  const location = useLocation();
+
+  const path = location.pathname.split("/")[2];
+
+  const [post, setPost] = useState({});
+  // console.log(path);
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("http://localhost:5001/api/posts/" + path);
+      // console.log(res);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
+  // console.log(location);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img className="singlePostImg" src={img3} />
+        {post.photo && <img className="singlePostImg" src={post.photo} />}
+
         <h1 className="singlePostTitle">
-          Laboris sunt aute cupidatat
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-solid fa-pen-to-square"></i>
             <i className="singlePostIcon fa-solid fa-trash-can"></i>
@@ -19,17 +39,17 @@ export default function SinglePost() {
 
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Vamshi </b>
+            Author:
+            <Link to={`/?user=${post.username}`} className="link">
+              <b>{post.username} </b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          I am writing to express my interest in the Full Stack Web Developer
-          position at your dynamic early-stage startup based in Tampa, Florida.
-          With strong experience in CSS, MongoDB, and Node.js, combined with a
-          keen eye for design and a passion for creating user-friendly
-          interfaces, I believe I am a perfect fit for your team.
-        </p>
+        <p className="singlePostDesc">{post.desc}</p>
       </div>
     </div>
   );
