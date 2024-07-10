@@ -3,7 +3,7 @@ import "./post.css";
 import image1 from "../../Assets/images/img1.jpg";
 import { Link } from "react-router-dom";
 export default function Post({ post }) {
-  const PF = "http://localhost:5001/images/";
+  const PF = "http://18.218.39.207:5001/images/";
   console.log(post.photo);
 
   return (

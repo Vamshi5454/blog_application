@@ -10,7 +10,7 @@ export default function Sidebar() {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("http://localhost:5001/api/categories");
+      const res = await axios.get("http://18.218.39.207:5001/api/categories");
       // console.log(res);
       setCats(res.data);
     };
@@ -22,8 +22,8 @@ export default function Sidebar() {
         <span className="sidebarTitle">ABOUT ME</span>
         <img src={img2} alt="" />
         <p>
-          Laboris sunt aute cupidatat velit magna velit ullamco dolore mollit
-          amet ex esse.Sunt eu ut nostrud id quis proident.
+          This Application was created by Vamshi Ponugoti. Feel free to write ur
+          own blogs here.
         </p>
       </div>
       <div className="sidebarItem">
