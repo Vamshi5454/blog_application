@@ -13,11 +13,14 @@ export default function Register() {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:5001/api/auth/register", {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "http://18.218.39.207:5001/api/auth/register",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       res.data && window.location.replace("/login");
       // console.log(res);
     } catch (err) {

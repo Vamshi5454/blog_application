@@ -23,14 +23,14 @@ export default function Write() {
       data.append("file", file, filename);
       newPost.photo = filename;
       try {
-        await axios.post("http://localhost:5001/api/upload", data);
+        await axios.post("http://18.218.39.207:5001/api/upload", data);
       } catch (err) {
         console.log(err);
       }
     }
 
     try {
-      const res = axios.post("http://localhost:5001/api/posts", newPost);
+      const res = axios.post("http://18.218.39.207:5001/api/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };
